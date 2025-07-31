@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web-content:/usr/share/nginx/html:ro
+
+  browsersync:
+    image: node:18-alpine
+    working_dir: /app
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    volumes:
+      - ./web-content:/app
+      - ./browsersync:/app/config
+    command: >
+      sh -c "
+        npm install -g browser-sync &&
+        browser-sync start --config config/bs-config.js --verbose
+      "
+    depends_on:
+      - nginx
