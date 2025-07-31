@@ -1,0 +1,17 @@
+{
+  "name": "browsersync",
+  "version": "1.0.0",
+  "main": "bs-config.js",
+  "scripts": {
+    "build-scss": "sass /app/scss:/app/css",
+    "start": "browser-sync start --config config/bs-config.js --cors true --verbose",
+    "watch-scss": "sass /app/scss:/app/css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "browser-sync": "^3.0.4"
+  }
+}
